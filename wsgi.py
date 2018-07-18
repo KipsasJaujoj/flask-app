@@ -27,7 +27,7 @@ def index():
         if not date_time in time_list:
             time_list.append(date_time)
     templateData['dataset'] = cur.fetchall()
-    templateData['date_time'] = date_time
+    templateData['time_list'] = time_list
     return render_template('index.html', **templateData)
 
 if __name__ == "__main__":
