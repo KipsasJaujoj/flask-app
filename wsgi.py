@@ -18,7 +18,6 @@ def index():
         'distance': data,
         'time': timestamp
 		}
-    cur.close()	
     return render_template('index.html', **templateData)
 
 if __name__ == "__main__":
