@@ -1,6 +1,8 @@
 from flask import Flask
 from flask import flash, render_template, request, redirect
 import MySQLdb
+import os
+
 application = Flask(__name__)
 
 @application.route("/")
