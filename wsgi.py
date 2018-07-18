@@ -12,11 +12,11 @@ def index():
     db = MySQLdb.connect(host=dbhost, user=user, passwd=passwd, db=dbname)        
     cur = db.cursor()
     cur.execute("""SELECT * FROM `sensor_data` ORDER BY timestamp DESC LIMIT 1""")
-    for (mac, data, timestamp) in cur:
+    for i in cur:
 	    templateData = {
-        'mac': mac,
-        'distance': data,
-        'time': timestamp
+        'mac': i["mac"],
+        'distance': i["data"],
+        'time': i["timestamp"]
 		}
     return render_template('index.html', **templateData)
 
