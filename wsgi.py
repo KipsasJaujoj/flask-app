@@ -22,7 +22,7 @@ def index():
         'distance': distance,
         'time': datetime.strftime("%Y-%m-%d %H:%M:%S"),
 		}
-    templateData['dataset'] = cur
+    templateData['dataset'] = cur.fetchall()
     return render_template('index.html', **templateData)
 
 if __name__ == "__main__":
