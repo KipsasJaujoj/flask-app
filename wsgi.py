@@ -9,7 +9,7 @@ def index():
         'distance': 42.58,
         'time': "09:33"
     }
-    return render_template('index.html')
+    return render_template('index.html', **templateData)
 
 if __name__ == "__main__":
     application.run(debug=True)
