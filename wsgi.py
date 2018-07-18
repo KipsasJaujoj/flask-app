@@ -38,7 +38,7 @@ def index():
     templateData['time_list'] = sorted(time_list)
     values = []
     for i in data_json:
-        if i['data']['mac_id'] == test_device:
+        if data_json[i]['data']['mac_id'] == test_device:
             for j in templateData['time_list']:
                 if j == i['data']['time']:
                     values.append(i['data']['distance'])
