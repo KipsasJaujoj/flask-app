@@ -40,8 +40,8 @@ def index():
     for i in data_json:
         if data_json[i]['data']['mac_id'] == test_device:
             for j in templateData['time_list']:
-                if j == i['data']['time']:
-                    values.append(i['data']['distance'])
+                if j == data_json[i]['data']['time']:
+                    values.append(data_json[i]['data']['distance'])
                     break
     templateData['distances'] = values
     return render_template('index.html', **templateData)
