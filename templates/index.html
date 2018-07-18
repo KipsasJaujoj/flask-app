@@ -8,6 +8,7 @@
 	<h3> distance ==>  {{ distance }}</h3>
 	<h3> time ==>  {{ time  }}</h3>
 	<h3> id ==>  {{ id }}</h3>
+	<h3> viskas ==>  {{ dataset }}</h3>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 	<canvas id="line-chart" width="800" height="450"></canvas>
 	<script>
@@ -17,7 +18,7 @@
     labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
     datasets: [{ 
         data: [86,114,106,106,107,111,133,221,783,2478],
-        label: {{ dataset[0][0] }},
+        label: {{ "bele" }},
         borderColor: "#3e95cd",
         fill: false
       }, { 
