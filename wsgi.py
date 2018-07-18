@@ -25,7 +25,12 @@ def index():
         'distance': distance,
         'time': date_time
         }
-        data_json['id'] = { 'data': { 'id': id, 'mac_id': mac_id, 'distance': distance, 'time': date_time }}
+        data_json['id'] = {}
+        data_json['id']['data'] = {}
+        data_json['id']['data']['id'] = id
+        data_json['id']['data']['mac_id'] = mac_id
+        data_json['id']['data']['distance'] = distance
+        data_json['id']['data']['time'] = date_time
         if not date_time in time_list:
             time_list.append(date_time)    
     templateData['dataset'] = cur.fetchall()
