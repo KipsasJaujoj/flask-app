@@ -7,7 +7,7 @@ application = Flask(__name__)
 def index():	
     user = "remote-admin"
     passwd = "Some-pass!23"
-    dbhost = "172.30.24.1"
+    dbhost = "172.30.53.4"
     dbname = "smart-recycling-bins"
     db = MySQLdb.connect(host=dbhost, user=user, passwd=passwd, db=dbname)        
     cur = db.cursor()
