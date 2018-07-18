@@ -7,7 +7,7 @@ application = Flask(__name__)
 def index():	
     user = "remote-admin"
     passwd = "Some-pass!23"
-    dbhost = "172.30.53.4"
+    dbhost = os.environ["MYSQL_SERVICE_HOST"]
     dbname = "smart-recycling-bins"
     db = MySQLdb.connect(host=dbhost, user=user, passwd=passwd, db=dbname)        
     cur = db.cursor()
@@ -16,7 +16,8 @@ def index():
 	    templateData = {
         'mac': i[1],
         'distance': i[2],
-        'time': i[3]
+        'time': i[3],
+		'viskas': i
 		}
     return render_template('index.html', **templateData)
 
