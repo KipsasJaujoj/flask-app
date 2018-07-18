@@ -35,6 +35,7 @@ def index():
             time_list.append(date_time)    
     templateData['dataset'] = cur.fetchall()
     test_device = templateData['dataset'][0][1]
+    templateData['test_device'] = test_device
     templateData['time_list'] = sorted(time_list)
     values = []
     for j in templateData['time_list']:
