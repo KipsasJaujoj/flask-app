@@ -9,6 +9,7 @@
 	<h3> time ==>  {{ time  }}</h3>
 	<h3> id ==>  {{ id }}</h3>
 	<h3> viskas ==>  {{ time_list }}</h3>
+	<h3> viskas ==>  {{ distances }}</h3>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 	<canvas id="line-chart" width="800" height="450"></canvas>
 	<script>
@@ -17,7 +18,7 @@
   data: {
     labels: ["{{ time_list[0] }}","{{ time_list[1] }}","{{ time_list[2] }}","{{ time_list[3] }}","{{ time_list[4] }}","{{ time_list[5] }}","{{ time_list[6] }}","{{ time_list[7] }}","{{ time_list[8] }}","{{ time_list[9] }}"],
     datasets: [{ 
-        data: [{{ distances[0] }},{{ distances[1] }},{{ distances[2] }},{{ distances[3] }},{{ distances[4] }},{{ distances[5] }},{{ distances[6] }},{{ distances[7] }},{{ distances[8] }},{{ distances[9] }}],
+        data: [{,20,10,16,24,38,74,167,508,784],
         label: "{{ dataset[0][1] }}",
         borderColor: "#e8c3b9",
         fill: false
