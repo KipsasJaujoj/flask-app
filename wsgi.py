@@ -2,6 +2,7 @@ from flask import Flask
 from flask import flash, render_template, request, redirect
 import MySQLdb
 import os
+from datetime import datetime
 
 application = Flask(__name__)
 
@@ -14,12 +15,12 @@ def index():
     db = MySQLdb.connect(host=dbhost, user=user, passwd=passwd, db=dbname)        
     cur = db.cursor()
     cur.execute("""SELECT * FROM `sensor_data` ORDER BY timestamp DESC LIMIT 1""")
-    for i in cur:
+    for (id, mac_id, distance, datetime) in cur:
 	    templateData = {
-        'mac': i[1],
-        'distance': i[2],
-        'time': i[3],
-		'viskas': i
+		'id': id,
+        'mac': mac_id,
+        'distance': distance,
+        'time': datetime.strftime("%Y-%m-%d %H:%M:%S"),
 		}
     return render_template('index.html', **templateData)
 
