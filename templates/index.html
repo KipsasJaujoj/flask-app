@@ -15,7 +15,7 @@
 	new Chart(document.getElementById("line-chart"), {
   type: 'line',
   data: {
-    labels: ["a","b","c","d","e","f","g","i","j","k"],
+    labels: ["{{ time_list[0] }}","{{ time_list[1] }}","{{ time_list[2] }}","{{ time_list[3] }}","{{ time_list[4] }}","{{ time_list[5] }}","{{ time_list[6] }}","{{ time_list[7] }}","{{ time_list[8] }}","{{ time_list[9] }}"],
     datasets: [{ 
         data: [40,20,10,16,24,38,74,167,508,784],
         label: "{{ dataset[0][1] }}",
