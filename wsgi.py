@@ -16,6 +16,7 @@ def index():
     cur = db.cursor()
     cur.execute("""SELECT * FROM `sensor_data` ORDER BY timestamp DESC LIMIT 100""")
     time_list = []
+    data_json = {}
     for (id, mac_id, distance, datetime) in cur:
         date_time = datetime.strftime("%Y-%m-%d %H:%M:%S")
         templateData = {
@@ -24,10 +25,20 @@ def index():
         'distance': distance,
         'time': date_time
         }
+        data_json['id'] = { 'data': { 'id': id, 'mac_id': mac_id, 'distance': distance, 'time': date_time }}
         if not date_time in time_list:
-            time_list.append(date_time)
+            time_list.append(date_time)    
     templateData['dataset'] = cur.fetchall()
+    test_device = templateData['dataset'][0][1]
     templateData['time_list'] = sorted(time_list)
+    values = []
+    for i in data_json:
+        if i['data']['mac_id'] == test_device:
+            for j in templateData['time_list']:
+                if j == i['data']['time']:
+                    values.append(i['data']['distance'])
+                    break
+    templateData['distances'] = values
     return render_template('index.html', **templateData)
 
 if __name__ == "__main__":
