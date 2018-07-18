@@ -8,14 +8,14 @@
 	<h3> distance ==>  {{ distance }}</h3>
 	<h3> time ==>  {{ time  }}</h3>
 	<h3> id ==>  {{ id }}</h3>
-	<h3> viskas ==>  {{ id }}</h3>
+	<h3> viskas ==>  {{ time_list }}</h3>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 	<canvas id="line-chart" width="800" height="450"></canvas>
 	<script>
 	new Chart(document.getElementById("line-chart"), {
   type: 'line',
   data: {
-    labels: [{{ time_list[0] }},{{ time_list[1] }},{{ time_list[2] }},{{ time_list[3] }},{{ time_list[4] }},{{ time_list[5] }},{{ time_list[6] }},{{ time_list[7] }},{{ time_list[8] }},{{ time_list[9] }}],
+    labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
     datasets: [{ 
         data: [40,20,10,16,24,38,74,167,508,784],
         label: "{{ dataset[0][1] }}",
