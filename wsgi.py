@@ -14,9 +14,9 @@ def index():
     cur.execute("""SELECT * FROM `sensor_data` ORDER BY timestamp DESC LIMIT 1""")
     for i in cur:
 	    templateData = {
-        'mac': i["macid"],
-        'distance': i["distance"],
-        'time': i["timestamp"]
+        'mac': i[1],
+        'distance': i[2],
+        'time': i[3]
 		}
     return render_template('index.html', **templateData)
 
