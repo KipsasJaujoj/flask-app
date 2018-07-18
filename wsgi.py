@@ -14,7 +14,7 @@ def index():
     dbname = "smart-recycling-bins"
     db = MySQLdb.connect(host=dbhost, user=user, passwd=passwd, db=dbname)        
     cur = db.cursor()
-    cur.execute("""SELECT * FROM `sensor_data` ORDER BY timestamp DESC LIMIT 1""")
+    cur.execute("""SELECT * FROM `sensor_data` ORDER BY timestamp DESC LIMIT 10""")
     for (id, mac_id, distance, datetime) in cur:
 	    templateData = {
 		'id': id,
@@ -22,6 +22,7 @@ def index():
         'distance': distance,
         'time': datetime.strftime("%Y-%m-%d %H:%M:%S"),
 		}
+	templateData = { 'dataset': cur }
     return render_template('index.html', **templateData)
 
 if __name__ == "__main__":
