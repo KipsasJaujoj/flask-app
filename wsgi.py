@@ -16,18 +16,18 @@ def index():
     cur = db.cursor()
     cur.execute("""SELECT * FROM `sensor_data` ORDER BY timestamp DESC LIMIT 100""")
     time_list = []
-	for (id, mac_id, distance, datetime) in cur:
-	    date_time = datetime.strftime("%Y-%m-%d %H:%M:%S")
-	    templateData = {
-		'id': id,
+    for (id, mac_id, distance, datetime) in cur:
+        date_time = datetime.strftime("%Y-%m-%d %H:%M:%S")
+        templateData = {
+        'id': id,
         'mac': mac_id,
         'distance': distance,
         'time': date_time
-		}
+        }
         if not date_time in time_list:
             time_list.append(date_time)
     templateData['dataset'] = cur.fetchall()
-	templateData['date_time'] = date_time
+    templateData['date_time'] = date_time
     return render_template('index.html', **templateData)
 
 if __name__ == "__main__":
