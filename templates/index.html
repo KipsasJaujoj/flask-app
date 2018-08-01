@@ -20,16 +20,16 @@
     labels: [new Date("{{ time_list[0] }}").toLocaleString(), new Date(("{{ time_list[1] }}").toLocaleString(), new Date("{{ time_list[2] }}").toLocaleString()],
     datasets: [{ 
         data: [{
-		  t: new Date("{{ time_list[0] }}"),
-		  y: 5
-		}, {
-		  t: new Date("{{ time_list[1] }}"),
-		  y: 10
-		}, {
-		  t: new Date("{{ time_list[2] }}"),
-		  y: 13
-		}],
-        label: "{{ dataset[0][1] }}",
+          t: new Date("{{ time_list[0] }}"),
+          y: 5
+        }, {
+          t: new Date("{{ time_list[1] }}"),
+          y: 10
+        }, {
+          t: new Date("{{ time_list[2] }}"),
+          y: 13
+        }],
+        label: "bele",
         borderColor: "#e8c3b9",
         fill: false
       }
@@ -39,12 +39,7 @@
     title: {
       display: true,
       text: 'Distance data from smart recycling bins'
-    },
-	scales: {
-	  xAxes: [{
-	    type: 'time'
-	  }]
-	}
+    }
   }
 });</script>
     </body>
