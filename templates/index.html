@@ -17,16 +17,16 @@
 	new Chart(document.getElementById("line-chart"), {
   type: 'line',
   data: {
-    labels: [new Date("{{ time_list[0] }}").toLocaleString(), new Date(("{{ time_list[1] }}").toLocaleString(), new Date("{{ time_list[2] }}").toLocaleString()],
+    labels: [new Date("2015-3-15 13:3").toLocaleString(), new Date("2015-3-25 13:2").toLocaleString(), new Date("2015-4-25 14:12").toLocaleString()],
     datasets: [{ 
         data: [{
-          t: new Date("{{ time_list[0] }}"),
+          t: new Date("2015-3-15 13:3"),
           y: 5
         }, {
-          t: new Date("{{ time_list[1] }}"),
+          t: new Date("2015-3-25 13:2"),
           y: 10
         }, {
-          t: new Date("{{ time_list[2] }}"),
+          t: new Date("2015-4-25 14:12"),
           y: 13
         }],
         label: "bele",
