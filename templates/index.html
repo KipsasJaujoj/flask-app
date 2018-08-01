@@ -17,7 +17,7 @@
 	new Chart(document.getElementById("line-chart"), {
   type: 'line',
   data: {
-    labels: ["{{ time_list[0] }}","{{ time_list[1] }}","{{ time_list[2] }}"],
+    labels: [new Date("{{ time_list[0] }}").toLocaleString(), new Date(("{{ time_list[1] }}").toLocaleString(), new Date("{{ time_list[2] }}").toLocaleString()],
     datasets: [{ 
         data: [{
 		  t: new Date("{{ time_list[0] }}"),
