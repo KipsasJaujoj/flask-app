@@ -17,10 +17,15 @@
 	new Chart(document.getElementById("line-chart"), {
   type: 'line',
   data: {
-    labels: ["{{ time_list[0] }}","{{ time_list[1] }}","{{ time_list[2] }}","{{ time_list[3] }}","{{ time_list[4] }}","{{ time_list[5] }}","{{ time_list[6] }}","{{ time_list[7] }}","{{ time_list[8] }}","{{ time_list[9] }}"],
+    labels: ["{{ time_list[0] }}","{{ time_list[1] }}"],
     datasets: [{ 
         data: [{
-		    t:5,20,10,16,24,38,74,167,508,784],
+		  t: "{{ time_list[0] }}",
+		  y: 5
+		}, {
+		  t: "{{ time_list[1] }}",
+		  y: 10
+		}]
         label: "{{ dataset[0][1] }}",
         borderColor: "#e8c3b9",
         fill: false
@@ -37,7 +42,7 @@
 	    type: 'time',
 		  time: {
 		    displayFormats: {
-			  second: 'h:mm:ss a'
+			  second: 'HH:mm:ss'
 			}
 		  }
 	  }]
