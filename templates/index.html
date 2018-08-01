@@ -19,7 +19,8 @@
   data: {
     labels: ["{{ time_list[0] }}","{{ time_list[1] }}","{{ time_list[2] }}","{{ time_list[3] }}","{{ time_list[4] }}","{{ time_list[5] }}","{{ time_list[6] }}","{{ time_list[7] }}","{{ time_list[8] }}","{{ time_list[9] }}"],
     datasets: [{ 
-        data: [5,20,10,16,24,38,74,167,508,784],
+        data: [{
+		    t:5,20,10,16,24,38,74,167,508,784],
         label: "{{ dataset[0][1] }}",
         borderColor: "#e8c3b9",
         fill: false
@@ -30,7 +31,17 @@
     title: {
       display: true,
       text: 'Distance data from smart recycling bins'
-    }
+    },
+	scales: {
+	  xAxes: [{
+	    type: 'time',
+		  time: {
+		    displayFormats: {
+			  second: 'h:mm:ss a'
+			}
+		  }
+	  }]
+	}
   }
 });</script>
     </body>

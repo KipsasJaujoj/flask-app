@@ -32,7 +32,7 @@ def index():
         data_json['id']['data']['distance'] = distance
         data_json['id']['data']['time'] = date_time
         if not date_time in time_list:
-            time_list.append(date_time)    
+            time_list.append(date_time.strftime('%Y-%m-%d %H:%M:%S'))    
     templateData['dataset'] = cur.fetchall()
     test_device = templateData['dataset'][0][1]
     templateData['test_device'] = test_device
