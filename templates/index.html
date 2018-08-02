@@ -9,7 +9,7 @@
 	<h3> time ==>  {{ time  }}</h3>
 	<h3> id ==>  {{ id }}</h3>
 	<h3> viskas ==>  {{ time_list[0] }}, {{ time_list[1] }}, "{{ time_list[2] }}"</h3>
-	<h3> viskas ==>  {{ distances }}</h3>
+	<h3> viskas ==>  {{ dataset }}</h3>
 	<h3> viskas ==>  {{ test_device }}</h3>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 	<canvas id="line-chart" width="800" height="450"></canvas>
@@ -17,16 +17,16 @@
 	new Chart(document.getElementById("line-chart"), {
   type: 'line',
   data: {
-    labels: [new Date("2015-3-15 13:33:55").toLocaleString(), new Date("2015-3-25 13:22:13").toLocaleString(), new Date("2015-4-25 14:12:08").toLocaleString()],
+    labels: [new Date("2015-03-15 13:33:55").toLocaleString(), new Date("2015-03-25 13:22:13").toLocaleString(), new Date("2015-04-25 14:12:08").toLocaleString()],
     datasets: [{ 
         data: [{
-          t: new Date("2015-3-15 13:33:55"),
+          t: new Date("2015-03-15 13:33:55"),
           y: 5
         }, {
-          t: new Date("2015-3-25 13:22:13"),
+          t: new Date("2015-03-25 13:22:13"),
           y: 10
         }, {
-          t: new Date("2015-4-25 14:12:08"),
+          t: new Date("2015-04-25 14:12:08"),
           y: 13
         }],
         label: "bele",
