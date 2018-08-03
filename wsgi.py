@@ -16,8 +16,6 @@ def index():
     db = MySQLdb.connect(host=dbhost, user=user, passwd=passwd, db=dbname)        
     cur = db.cursor()
     cur.execute("""SELECT * FROM `sensor_data` ORDER BY timestamp DESC LIMIT 100""")
-    time_list = []
-    data_json = {}
     data = cur.fetchall()
     parsed_data = OrderedDict()
     for (id, mac_id, distance, datetime_object) in data:
@@ -29,7 +27,7 @@ def index():
     for i in parsed_data:
         if len(parsed_data[i]) < 4:
             parsed_data.pop(i)
-    templateData['distance_data'] = OrderedDict(sorted(parsed_data.iteritems())
+    templateData['distance_data'] = OrderedDict(sorted(parsed_data.iteritems()))
     return render_template('index.html', **templateData)
 
 if __name__ == "__main__":
