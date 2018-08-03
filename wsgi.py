@@ -24,11 +24,12 @@ def index():
             parsed_data[date_time].update({ mac_id: { "distance": distance }})
         else:
             parsed_data.update({ date_time: { mac_id: { "distance": distance }}})
+    filtered_data = OrderedDict()
     for i in parsed_data:
-        if len(parsed_data[i]) < 4:
-            parsed_data.pop(i)
+        if len(parsed_data[i]) == 4:
+            filtered_data.append({i: parsed_data[i]})
     templateData = {}
-    templateData['distance_data'] = OrderedDict(sorted(parsed_data.items()))
+    templateData['distance_data'] = OrderedDict(sorted(filtered_data.items()))
     return render_template('index.html', **templateData)
 
 if __name__ == "__main__":
