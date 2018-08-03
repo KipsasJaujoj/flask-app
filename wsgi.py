@@ -27,7 +27,7 @@ def index():
     filtered_data = OrderedDict()
     for i in parsed_data:
         if len(parsed_data[i]) == 4:
-            filtered_data.append({i: parsed_data[i]})
+            filtered_data.update({i: parsed_data[i]})
     templateData = {}
     templateData['distance_data'] = OrderedDict(sorted(filtered_data.items()))
     return render_template('index.html', **templateData)
