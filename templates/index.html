@@ -16,18 +16,13 @@
 	new Chart(document.getElementById("line-chart"), {
   type: 'line',
   data: {
-    labels: [ {% for i in distance_data %}
-	          new Date("{{ i }}"){{ "," if not loop.last }}
-              {% endfor %}	
-	new Date("2015-03-15 13:33:55").toLocaleString()],
+    labels: [ {% for i in distance_data %}new Date("{{ i }}").toLocaleString(){{ "," if not loop.last }}{% endfor %}],
     datasets: [{ 
         data: [
-		{% for i in distance_data %}
-		{
+		{% for i in distance_data %}{
           t: new Date("{{ i }}"),
           y: 5
-        }{{ "," if not loop.last }}
-		{% endfor %}
+        }{{ "," if not loop.last }}{% endfor %}
 		],
         label: "bele",
         borderColor: "#e8c3b9",
