@@ -3,6 +3,7 @@ from flask import flash, render_template, request, redirect
 import MySQLdb
 import os
 from datetime import datetime
+from collections import OrderedDict
 
 application = Flask(__name__)
 
@@ -17,34 +18,18 @@ def index():
     cur.execute("""SELECT * FROM `sensor_data` ORDER BY timestamp DESC LIMIT 100""")
     time_list = []
     data_json = {}
-    for (id, mac_id, distance, datetime) in cur:
-        date_time = datetime.strftime("%Y-%m-%d %H:%M:%S")
-        templateData = {
-        'id': id,
-        'mac': mac_id,
-        'distance': distance,
-        'time': date_time
-        }
-        data_json['id'] = {}
-        data_json['id']['data'] = {}
-        data_json['id']['data']['id'] = id
-        data_json['id']['data']['mac_id'] = mac_id
-        data_json['id']['data']['distance'] = distance
-        data_json['id']['data']['time'] = date_time
-        if not date_time in time_list:
-            time_list.append(date_time)    
-    templateData['dataset'] = cur.fetchall()
-    test_device = templateData['dataset'][0][1]
-    templateData['test_device'] = test_device
-    templateData['time_list'] = sorted(time_list)
-    values = []
-    for j in templateData['time_list']:
-        for i in data_json:
-            if data_json[i]['data']['mac_id'] == test_device:
-                if j == data_json[i]['data']['time']:
-                    values.append(data_json[i]['data']['distance'])
-                    break
-    templateData['distances'] = values
+    data = cur.fetchall()
+    parsed_data = OrderedDict()
+    for (id, mac_id, distance, datetime_object) in data:
+        date_time = datetime_object.strftime("%Y-%m-%d %H:%M:%S")
+        if date_time in parsed_data:
+            parsed_data[date_time].update({ mac_id: { "distance": distance }})
+        else:
+            parsed_data.update({ date_time: { mac_id: { "distance": distance }}})
+    for i in parsed_data:
+        if len(parsed_data[i]) < 4:
+            parsed_data.pop(i)
+    templateData['distance_data'] = OrderedDict(sorted(parsed_data.iteritems())
     return render_template('index.html', **templateData)
 
 if __name__ == "__main__":
