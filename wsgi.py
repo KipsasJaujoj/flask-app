@@ -29,7 +29,7 @@ def index():
         if len(parsed_data[i]) < 4:
             parsed_data.pop(i)
     templateData = {}
-    templateData['distance_data'] = OrderedDict(sorted(parsed_data.iteritems()))
+    templateData['distance_data'] = OrderedDict(sorted(parsed_data.items()))
     templateData['version'] = sys.version
     return render_template('index.html', **templateData)
 
