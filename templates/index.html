@@ -6,7 +6,10 @@
     <body>
 <!--	<h3> a ==>  {{ distance_data }}</h3>-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.css" />
 	<canvas id="line-chart" width="800" height="450"></canvas>
+	<canvas id="dychart-chart" style="width:480px; height:320px;"></canvas>
 	<script>
 	new Chart(document.getElementById("line-chart"), {
   type: 'line',
@@ -63,5 +66,18 @@
     }
   }
 });</script>
+<script type="text/javascript">
+  g = new Dygraph(
+
+    // containing div
+    document.getElementById("dychart-chart"),
+
+    [
+	    ["data", "ec:fa:bc:e:a6:95_1", "ec:fa:bc:e:a6:95_2", "ec:fa:bc:e:a6:95_3", "ec:fa:bc:e:a6:95_4"],{% for i in distance_data %}
+	    [new Date("{{ i }}"), distance_data[i]['ec:fa:bc:e:a6:95_1']['distance'], distance_data[i]['ec:fa:bc:e:a6:95_2']['distance'], distance_data[i]['ec:fa:bc:e:a6:95_3']['distance'], distance_data[i]['ec:fa:bc:e:a6:95_4']['distance']]{{ "," if not loop.last }}
+	{% endfor %}
+    ],
+);
+</script>
     </body>
 </html>
