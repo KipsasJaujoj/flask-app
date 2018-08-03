@@ -50,10 +50,10 @@
         fill: false
       },{ 
         data: [
-		{% for i in distance_data %}{% if distance_data[i]['ec:fa:bc:e:a6:95_4']['distance'] != 4.93 %}{
+		{% for i in distance_data %}
           t: new Date("{{ i }}"),
           y: {{ distance_data[i]['ec:fa:bc:e:a6:95_4']['distance'] }}
-        }{{ "," if not loop.last }}{% endif %}{% endfor %}
+        }{{ "," if not loop.last }}{% endfor %}
 		],
         label: "ec:fa:bc:e:a6:95_4",
         borderColor: "#e8c3b9",
