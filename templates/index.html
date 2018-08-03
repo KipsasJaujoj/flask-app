@@ -14,7 +14,7 @@
 	new Chart(document.getElementById("line-chart"), {
   type: 'line',
   data: {
-    labels: [ {% for i in distance_data %}new Date("{{ i }}").toLocaleString(){{ "," if not loop.last }}{% endfor %}],
+    labels: [ {% for i in distance_data %}new Date("{{ i }}").toLocaleString(){{ ", " if not loop.last }}{% endfor %}],
     datasets: [{ 
         data: [
 		{% for i in distance_data %}{
@@ -74,7 +74,7 @@
 
     [
 	    ["data", "ec:fa:bc:e:a6:95_1", "ec:fa:bc:e:a6:95_2", "ec:fa:bc:e:a6:95_3", "ec:fa:bc:e:a6:95_4"],{% for i in distance_data %}
-	    [new Date("{{ i }}"), distance_data[i]['ec:fa:bc:e:a6:95_1']['distance'], distance_data[i]['ec:fa:bc:e:a6:95_2']['distance'], distance_data[i]['ec:fa:bc:e:a6:95_3']['distance'], distance_data[i]['ec:fa:bc:e:a6:95_4']['distance']]{{ "," if not loop.last }}
+	    [new Date("{{ i }}"), {{ distance_data[i]['ec:fa:bc:e:a6:95_1']['distance'] }}, {{ distance_data[i]['ec:fa:bc:e:a6:95_2']['distance'] }}, {{distance_data[i]['ec:fa:bc:e:a6:95_3']['distance'] }}, {{ distance_data[i]['ec:fa:bc:e:a6:95_4']['distance'] }}]{{ "," if not loop.last }}
 	{% endfor %}
     ],
 );
