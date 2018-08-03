@@ -45,7 +45,7 @@
         fill: false
       },{ 
         data: [
-		{% for i in distance_data %}
+		{% for i in distance_data %}{
           t: new Date("{{ i }}"),
           y: {{ distance_data[i]['ec:fa:bc:e:a6:95_4']['distance'] }}
         }{{ "," if not loop.last }}{% endfor %}
