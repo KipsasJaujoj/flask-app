@@ -15,7 +15,7 @@ def index():
     dbname = "smart-recycling-bins"
     db = MySQLdb.connect(host=dbhost, user=user, passwd=passwd, db=dbname)        
     cur = db.cursor()
-    cur.execute("""SELECT * FROM `sensor_data` ORDER BY timestamp DESC LIMIT 10""")
+    cur.execute("""SELECT * FROM `sensor_data` ORDER BY timestamp DESC LIMIT 200""")
     data = cur.fetchall()
     parsed_data = OrderedDict()
     for (id, mac_id, distance, datetime_object) in data:
