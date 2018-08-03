@@ -4,6 +4,7 @@ import MySQLdb
 import os
 from datetime import datetime
 from collections import OrderedDict
+import sys
 
 application = Flask(__name__)
 
@@ -27,7 +28,9 @@ def index():
     for i in parsed_data:
         if len(parsed_data[i]) < 4:
             parsed_data.pop(i)
+    templateData = {}
     templateData['distance_data'] = OrderedDict(sorted(parsed_data.iteritems()))
+    templateData['version'] = sys.version
     return render_template('index.html', **templateData)
 
 if __name__ == "__main__":
