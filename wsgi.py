@@ -30,7 +30,9 @@ def index():
             filtered_data.update({i: parsed_data[i]})
     templateData = {}
     templateData['distance_data'] = OrderedDict(sorted(filtered_data.items()))
+    templateData['config'] = config
     return render_template('index.html', **templateData)
 
 if __name__ == "__main__":
+    config = {4: { "ec:fa:bc:e:a6:95_1": "general" , "ec:fa:bc:e:a6:95_2": "general", "ec:fa:bc:e:a6:95_3": "glass", "ec:fa:bc:e:a6:95_4": "paper" }}
     application.run(debug=True)
