@@ -34,7 +34,7 @@
   type: 'line',
   data: {
     labels: [ {% for i in distance_data %}new Date("{{ i }}").toLocaleString(){{ ", " if not loop.last }}{% endfor %}],
-    datasets: [ {% for i in config["floors"][4] %}{ 
+    datasets: [ {% for i in config['floors'][4] %}{ 
         data: [
 		{% for j in distance_data %}{
           t: new Date("{{ j }}"),

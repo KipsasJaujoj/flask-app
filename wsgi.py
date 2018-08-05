@@ -6,8 +6,8 @@ from datetime import datetime
 from collections import OrderedDict
 
 application = Flask(__name__)
-config = { floors: {4: { "ec:fa:bc:e:a6:95_1": "general" , "ec:fa:bc:e:a6:95_2": "general", "ec:fa:bc:e:a6:95_3": "glass", "ec:fa:bc:e:a6:95_4": "paper" }},
-           colors: [ "#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#dd4c25", "#cebf1a", "#67d117", "#09bc2d", "#0fc1aa", "#1111c4", "#7f0fc4", "#c90e7e" ]
+config = { "floors": {4: { "ec:fa:bc:e:a6:95_1": "general" , "ec:fa:bc:e:a6:95_2": "general", "ec:fa:bc:e:a6:95_3": "glass", "ec:fa:bc:e:a6:95_4": "paper" }},
+           "colors": [ "#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#dd4c25", "#cebf1a", "#67d117", "#09bc2d", "#0fc1aa", "#1111c4", "#7f0fc4", "#c90e7e" ]
          }
 
 @application.route("/")
