@@ -44,7 +44,7 @@
         label: "{{ i }}",
         borderColor: "{{ config['colors'][counter] }}",
         fill: false
-      }{{ ", " if not loop.last }}{{ counter++ }}{% endfor %}
+      }{{ ", " if not loop.last }}{% set counter = counter + 1 %}{% endfor %}
     ]
   },
   options: {
