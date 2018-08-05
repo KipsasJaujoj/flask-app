@@ -6,6 +6,7 @@ from datetime import datetime
 from collections import OrderedDict
 
 application = Flask(__name__)
+config = {4: { "ec:fa:bc:e:a6:95_1": "general" , "ec:fa:bc:e:a6:95_2": "general", "ec:fa:bc:e:a6:95_3": "glass", "ec:fa:bc:e:a6:95_4": "paper" }}
 
 @application.route("/")
 def index():	
@@ -34,5 +35,4 @@ def index():
     return render_template('index.html', **templateData)
 
 if __name__ == "__main__":
-    config = {4: { "ec:fa:bc:e:a6:95_1": "general" , "ec:fa:bc:e:a6:95_2": "general", "ec:fa:bc:e:a6:95_3": "glass", "ec:fa:bc:e:a6:95_4": "paper" }}
     application.run(debug=True)
