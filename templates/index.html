@@ -29,52 +29,22 @@
 
 
 	<script>
+	{{ set counter = 0 }}
 	g = new Chart(document.getElementById("chartjs-chart"), {
   type: 'line',
   data: {
     labels: [ {% for i in distance_data %}new Date("{{ i }}").toLocaleString(){{ ", " if not loop.last }}{% endfor %}],
-    datasets: [{ 
+    datasets: [ {% for i in config["floors"][4] %}{ 
         data: [
-		{% for i in distance_data %}{
-          t: new Date("{{ i }}"),
-          y: {{ distance_data[i]['ec:fa:bc:e:a6:95_1']['distance'] }}
+		{% for j in distance_data %}{
+          t: new Date("{{ j }}"),
+          y: {{ distance_data[j][i]['distance'] }}
         }{{ "," if not loop.last }}{% endfor %}
 		],
-        label: "ec:fa:bc:e:a6:95_1",
-        borderColor: "#3e95cd",
+        label: "{{ i }}",
+        borderColor: "{{ config['colors'][counter] }}",
         fill: false
-      },
-	  { 
-        data: [
-		{% for i in distance_data %}{
-          t: new Date("{{ i }}"),
-          y: {{ distance_data[i]['ec:fa:bc:e:a6:95_2']['distance'] }}
-        }{{ "," if not loop.last }}{% endfor %}
-		],
-        label: "ec:fa:bc:e:a6:95_2",
-        borderColor: "#8e5ea2",
-        fill: false
-      },{ 
-        data: [
-		{% for i in distance_data %}{
-          t: new Date("{{ i }}"),
-          y: {{ distance_data[i]['ec:fa:bc:e:a6:95_3']['distance'] }}
-        }{{ "," if not loop.last }}{% endfor %}
-		],
-        label: "ec:fa:bc:e:a6:95_3",
-        borderColor: "#3cba9f",
-        fill: false
-      },{ 
-        data: [
-		{% for i in distance_data %}{
-          t: new Date("{{ i }}"),
-          y: {{ distance_data[i]['ec:fa:bc:e:a6:95_4']['distance'] }}
-        }{{ "," if not loop.last }}{% endfor %}
-		],
-        label: "ec:fa:bc:e:a6:95_4",
-        borderColor: "#e8c3b9",
-        fill: false
-      }
+      }{ ", " if not loop.last }{{ counter++ }}{% endfor %}
     ]
   },
   options: {
