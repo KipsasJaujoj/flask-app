@@ -61,7 +61,7 @@
 	    [new Date("{{ i }}"),{{ distance_data[i]['ec:fa:bc:e:a6:95_1']['distance'] }},{{ distance_data[i]['ec:fa:bc:e:a6:95_2']['distance'] }},{{distance_data[i]['ec:fa:bc:e:a6:95_3']['distance'] }},{{ distance_data[i]['ec:fa:bc:e:a6:95_4']['distance'] }}]{{ "," if not loop.last }}{% endfor %}
     ],
 	{
-		labels: ["data", {% for i in config['floors'][4] %}{{ i }}{{ ", " if not loop.last }}{% endfor %}],
+		labels: ["data", {% for i in config['floors'][4] %}"{{ i }}"{{ ", " if not loop.last }}{% endfor %}],
 		rollPeriod: 1,
 		showRoller: true,
 		legend: 'always',
