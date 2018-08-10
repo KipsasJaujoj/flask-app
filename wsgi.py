@@ -36,5 +36,12 @@ def index():
     templateData['config'] = config
     return render_template('index.html', **templateData)
 
+@app.route('/date/', methods=['POST'])
+def square():
+	time_scale = request.form.get('time_scale', 'month'))
+	data = {'square': square}
+	data = jsonify(data)
+	return data
+
 if __name__ == "__main__":
     application.run(debug=True)
