@@ -39,7 +39,8 @@ def index():
 @application.route('/date/', methods=['POST'])
 def square():
 	time_scale = request.form.get("time_scale", "month")
-    data = {"time_scale": time_scale + "labas"}
+    time_scale += "labas"
+    data = {"time_scale": time_scale}
 	data = jsonify(data)
 	return data
 
