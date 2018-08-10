@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import flash, render_template, request, redirect, send_from_directory
+from flask import flash, render_template, request, redirect, send_from_directory, jsonify
 import MySQLdb
 import os
 from datetime import datetime
@@ -38,10 +38,10 @@ def index():
 
 @application.route('/date/', methods=['POST'])
 def square():
-#	time_scale = request.form.get('time_scale', 'month')
-#	data = {'square': square}
-#	data = jsonify(data)
-	return True
+	time_scale = request.form.get("time_scale", "month")
+    data = {"time_scale": time_scale + "labas"}
+	data = jsonify(data)
+	return data
 
 @application.route('/static/<path:path>')
 def send_ota(path):

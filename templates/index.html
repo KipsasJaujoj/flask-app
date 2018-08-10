@@ -6,6 +6,7 @@
     <body>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.css" />
 	<div><p>config -> {{config }}</p></div>
 	<div>Chartjs grafikas:</div>
@@ -24,7 +25,12 @@
       <label for="3">ec:fa:bc:e:a6:95_4</label>
     </div>
 	<div>
-	  <button type="button" id="b0" onclick="set_period('month')">Month</button>
+	<form action="/date/" method="post" id="form">
+<!--    <button name="time_scale" id="b0" type="submit">Month</button>-->
+	<input type="text" id="value" name="time_scale" autofocus autocomplete="off">
+	<button>Post</button>
+    </form>
+	<p id="result"></p>
 	</div>
 
 
@@ -86,6 +92,22 @@
     }
 	function set_period(period) {
 	  return true
-	}</script>
+	}
+	</script>
+	<script>
+	$('#form').on('submit', function(e){
+		var value = $('#value').val();
+		e.preventDefault();
+		$.ajax({
+			url: 'http://127.0.0.1/date/',
+			data: {'time_scale': value},
+			method: 'POST',
+			success: function(data) {
+				$('#value').val('');
+				$('#result').html('Behold: ' + data['time_scale'])
+			}
+		});
+	});
+	</script>
     </body>
 </html>
