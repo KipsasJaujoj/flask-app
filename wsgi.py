@@ -38,11 +38,10 @@ def index():
 
 @application.route('/date/', methods=['POST'])
 def square():
-	time_scale = request.form.get("time_scale", "month")
-    time_scale = time_scale + "labas"
-    data = {"time_scale": time_scale}
-	data = jsonify(data)
-	return data
+    time_scale = request.form.get("time_scale", "month")
+    data = {"time_scale": time_scale + "labas"}
+    data = jsonify(data)
+    return data
 
 @application.route('/static/<path:path>')
 def send_ota(path):
