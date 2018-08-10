@@ -25,7 +25,7 @@
       <label for="3">ec:fa:bc:e:a6:95_4</label>
     </div>
 	<div>
-	<form action="/date/" method="post" id="form">
+	<form method="post" id="form">
 <!--    <button name="time_scale" id="b0" type="submit">Month</button>-->
 	<input type="text" id="value" name="time_scale" autofocus autocomplete="off">
 	<button>Post</button>
@@ -99,7 +99,7 @@
 		var value = $('#value').val();
 		e.preventDefault();
 		$.ajax({
-			url: 'http://127.0.0.1/date/',
+			url: 'http://127.0.0.1:8080/date/',
 			data: {'time_scale': value},
 			method: 'POST',
 			success: function(data) {
