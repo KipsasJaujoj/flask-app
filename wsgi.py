@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import flash, render_template, request, redirect
+from flask import flash, render_template, request, redirect, send_from_directory
 import MySQLdb
 import os
 from datetime import datetime
@@ -42,6 +42,10 @@ def square():
 	data = {'square': square}
 	data = jsonify(data)
 	return data
+
+@app.route('/static/<path:path>')
+def send_ota(path):
+    return send_from_directory('static', path)
 
 if __name__ == "__main__":
     application.run(debug=True)
