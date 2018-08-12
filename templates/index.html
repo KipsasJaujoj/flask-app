@@ -103,7 +103,7 @@
 		var value = $('#value').val();
 		e.preventDefault();
 		$.ajax({
-			url: 'http://flask-app.dexter-lab.cluster.local:5000/date/',
+			url: 'http://flask-app.dexter-lab.svc:5000/date/',
 			data: {'time_scale': value},
 			method: 'POST',
 			success: function(data) {
@@ -118,7 +118,7 @@
 		var number = $('#num').val();
 		e.preventDefault();
 		$.ajax({
-			url: 'http://flask-app.dexter-lab.svc.cluster.local/square/',
+			url: 'http://flask-app.dexter-lab.svc/square/',
 			data: {'number': number},
 			method: 'POST',
 			success: function(data) {
