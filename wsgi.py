@@ -37,9 +37,17 @@ def index():
     return render_template('index.html', **templateData)
 
 @application.route('/date/', methods=['POST'])
-def square():
+def get_graph_data():
     time_scale = request.form.get("time_scale", "month")
     data = {"time_scale": time_scale + "labas"}
+    data = jsonify(data)
+    return data
+
+@application.route('/square/', methods=['POST'])
+def square():
+    num = float(request.form.get('number', 0))
+    square = num ** 2
+    data = {'square': square}
     data = jsonify(data)
     return data
 

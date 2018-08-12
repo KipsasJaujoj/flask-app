@@ -26,14 +26,18 @@
     </div>
 	<div>
 	<form method="post" id="form">
-<!--    <button name="time_scale" id="b0" type="submit">Month</button>-->
 	<input type="text" id="value" name="time_scale" autofocus autocomplete="off">
 	<button>Post</button>
     </form>
 	<p id="result"></p>
 	</div>
-
-
+		<h1>Square Calculator</h1>
+		<form method="post" id="forma">
+			<label for="num">Enter Number : </label>
+			<input type="text" id="num" name="number" autofocus autocomplete="off">
+			<button>Post</button>
+		</form>
+		<p id="square"></p>
 	<script>
 	{% set counter = 0 %}
 	g = new Chart(document.getElementById("chartjs-chart"), {
@@ -105,6 +109,21 @@
 			success: function(data) {
 				$('#value').val('');
 				$('#result').html('Behold: ' + data['time_scale'])
+			}
+		});
+	});
+	</script>
+	<script>
+	$('#forma').on('submit', function(e){
+		var number = $('#num').val();
+		e.preventDefault();
+		$.ajax({
+			url: 'http://127.0.0.1:5000/square/',
+			data: {'number': number},
+			method: 'POST',
+			success: function(data) {
+				$('#num').val('');
+				$('#square').html('Square of ' + number + ' is ' + data['square'])
 			}
 		});
 	});
