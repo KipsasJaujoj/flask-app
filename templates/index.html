@@ -103,7 +103,7 @@
 		var value = $('#value').val();
 		e.preventDefault();
 		$.ajax({
-			url: 'http://127.0.0.1:8080/date/',
+			url: 'http://flask-app-dexter-lab.e4ff.pro-eu-west-1.openshiftapps.com/:8080/date/',
 			data: {'time_scale': value},
 			method: 'POST',
 			success: function(data) {
@@ -118,7 +118,7 @@
 		var number = $('#num').val();
 		e.preventDefault();
 		$.ajax({
-			url: 'http://127.0.0.1:5000/square/',
+			url: 'http://127.0.0.1:8000/square/',
 			data: {'number': number},
 			method: 'POST',
 			success: function(data) {
