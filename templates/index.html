@@ -113,20 +113,5 @@
 		});
 	});
 	</script>
-	<script>
-	$('#forma').on('submit', function(e){
-		var number = $('#num').val();
-		e.preventDefault();
-		$.ajax({
-			url: 'http://flask-app-dexter-lab.e4ff.pro-eu-west-1.openshiftapps.com/square/',
-			data: {'number': number},
-			method: 'POST',
-			success: function(data) {
-				$('#num').val('');
-				$('#square').html('Square of ' + number + ' is ' + data['square'])
-			}
-		});
-	});
-	</script>
     </body>
 </html>

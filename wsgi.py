@@ -18,7 +18,8 @@ def index():
     dbname = "smart-recycling-bins"
     db = MySQLdb.connect(host=dbhost, user=user, passwd=passwd, db=dbname)        
     cur = db.cursor()
-    cur.execute("""SELECT * FROM `sensor_data` WHERE timestamp < '2018-08-06 09:38:40' ORDER BY timestamp DESC LIMIT 200""")
+#    cur.execute("""SELECT * FROM `sensor_data` WHERE timestamp < '2018-08-06 09:38:40' ORDER BY timestamp DESC LIMIT 200""")
+    cur.execute("""SELECT * FROM `sensor_data` ORDER BY timestamp DESC LIMIT 500""")
     data = cur.fetchall()
     parsed_data = OrderedDict()
     for (id, mac_id, distance, datetime_object) in data:
@@ -40,14 +41,6 @@ def index():
 def get_graph_data():
     time_scale = request.form.get("time_scale", "month")
     data = {"time_scale": time_scale + "labas"}
-    data = jsonify(data)
-    return data
-
-@application.route('/square/', methods=['POST'])
-def square():
-    num = float(request.form.get('number', 0))
-    square = num ** 2
-    data = {'square': square}
     data = jsonify(data)
     return data
 
