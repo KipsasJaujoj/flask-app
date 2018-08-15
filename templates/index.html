@@ -4,13 +4,10 @@
         <title>Smart recycling bins data</title>
     </head>
     <body>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.css" />
 	<div><p>config -> {{config }}</p></div>
-	<div>Chartjs grafikas:</div>
-	<div style="width:900px; height:500px;"><canvas id="chartjs-chart" style="width:900px; height:500px;"></canvas></div>
 	<div>dygraphs grafikas:</div>
 	<div id="dychart-chart" style="width:900px; height:500px;"></div>
 	<p><b>Rodyti:</b></p>
@@ -25,45 +22,13 @@
       <label for="3">ec:fa:bc:e:a6:95_4</label>
     </div>
 	<div>
+	<h1>Date Calculator</h1>
 	<form method="post" id="form">
 	<input type="text" id="value" name="time_scale" autofocus autocomplete="off">
 	<button>Post</button>
     </form>
 	<p id="result"></p>
 	</div>
-		<h1>Square Calculator</h1>
-		<form method="post" id="forma">
-			<label for="num">Enter Number : </label>
-			<input type="text" id="num" name="number" autofocus autocomplete="off">
-			<button>Post</button>
-		</form>
-		<p id="square"></p>
-	<script>
-	{% set counter = 0 %}
-	g = new Chart(document.getElementById("chartjs-chart"), {
-  type: 'line',
-  data: {
-    labels: [ {% for i in distance_data %}new Date("{{ i }}").toLocaleString(){{ ", " if not loop.last }}{% endfor %}],
-    datasets: [ {% for i in config['floors'][4] %}{ 
-        data: [
-		{% for j in distance_data %}{
-          t: new Date("{{ j }}"),
-          y: {{ distance_data[j][i]['distance'] }}
-        }{{ "," if not loop.last }}{% endfor %}
-		],
-        label: "{{ i }}",
-        borderColor: "{{ config['colors'][counter] }}",
-        fill: false
-      }{{ ", " if not loop.last }}{% set counter = counter + 1 %}{% endfor %}
-    ]
-  },
-  options: {
-    title: {
-      display: true,
-      text: 'Distance data from smart recycling bins'
-    }
-  }
-});</script>
 	<script>
     g = new Dygraph(
     document.getElementById("dychart-chart"),
