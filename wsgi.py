@@ -21,6 +21,12 @@ def get_graph_data():
     time_scale = request.form.get("time_scale", "month")
     if time_scale == "month":
         min_date = datetime.now() - timedelta(days=30)
+    elif time_scale == "week":
+        min_date = datetime.now() - timedelta(days=7)
+    elif time_scale == "3_days":
+        min_date = datetime.now() - timedelta(days=3)
+    else:
+        min_date = datetime.now() - timedelta(days=1)
     data = get_template_data(min_date)
     data = {"time_scale": json.dumps(data)}
     data = jsonify(data)

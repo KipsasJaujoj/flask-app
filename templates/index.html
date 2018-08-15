@@ -25,7 +25,7 @@
 	<h1>Date Calculator</h1>
 	<form method="post" id="form">
 	<input type="text" id="value" name="time_scale" autofocus autocomplete="off">
-	<button>Post</button>
+	<button id="month">Month</button><button id="week">Week</button><button id="3_days">3 days</button><button id="1_day">1 day</button>
     </form>
 	<p id="result"></p>
 	</div>
@@ -65,7 +65,10 @@
 	</script>
 	<script>
 	$('#form').on('submit', function(e){
-		var value = $('#value').val();
+//		var value = $('#value').val();
+        var button = this;
+        var value = button.id;
+		alert(button.id);
 		e.preventDefault();
 		$.ajax({
 			url: 'http://flask-app-dexter-lab.e4ff.pro-eu-west-1.openshiftapps.com:80/date/',
