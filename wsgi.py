@@ -2,7 +2,7 @@ from flask import Flask
 from flask import flash, render_template, request, redirect, send_from_directory, jsonify
 import MySQLdb
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
 from collections import OrderedDict
 
 application = Flask(__name__)
@@ -40,13 +40,16 @@ def index():
 @application.route('/date/', methods=['POST'])
 def get_graph_data():
     time_scale = request.form.get("time_scale", "month")
-    data = {"time_scale": time_scale + "labas"}
+    if time_scale == "month":
+        min_date = datetime.now() - timedelta(days=30)
+    data = {"time_scale": time_scale.strftime("%Y-%m-%d %H:%M:%S")}
     data = jsonify(data)
     return data
 
 @application.route('/static/<path:path>')
 def send_ota(path):
     return send_from_directory('static', path)
+
 
 if __name__ == "__main__":
     application.run(debug=True)
