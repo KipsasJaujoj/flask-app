@@ -4,6 +4,7 @@ import MySQLdb
 import os
 from datetime import datetime, timedelta
 from collections import OrderedDict
+import json
 
 application = Flask(__name__)
 config = { "floors": {4: { "ec:fa:bc:e:a6:95_1": "general" , "ec:fa:bc:e:a6:95_2": "general", "ec:fa:bc:e:a6:95_3": "glass", "ec:fa:bc:e:a6:95_4": "paper" }},
@@ -21,7 +22,7 @@ def get_graph_data():
     if time_scale == "month":
         min_date = datetime.now() - timedelta(days=30)
     data = get_template_data(min_date)
-    data = {"time_scale": data}
+    data = {"time_scale": json.dumps(data)}
     data = jsonify(data)
     return data
 
