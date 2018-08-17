@@ -24,8 +24,7 @@
 	<div>
 	<h1>Date Calculator</h1>
 	<form method="post" id="form">
-	<input type="text" id="value" name="time_scale" autofocus autocomplete="off">
-	<button id="month">Month</button><button id="week">Week</button><button id="3_days">3 days</button><button id="1_day">1 day</button>
+	<button value="month">Month</button><button value="week">Week</button><button value="3_days">3 days</button><button value="1_day">1 day</button>
     </form>
 	<p id="result"></p>
 	</div>
@@ -66,10 +65,25 @@
 	<script>
 	$('#form').on('submit', function(e){
 //		var value = $('#value').val();
-        var button = this;
-        var value = button.id;
-		alert(button.id);
 		e.preventDefault();
+		var $btn = $(document.activeElement);
+		if (
+        /* there is an activeElement at all */
+        $btn.length &&
+
+        /* it's a child of the form */ 
+        $form.has($btn) &&
+
+        /* it's really a submit element */
+        $btn.is('button[type="submit"], input[type="submit"], input[type="image"]') &&
+
+        /* it has a "name" attribute */
+        $btn.is('[name]')
+    ) {
+        alert("Seems, that this element was clicked:", $btn);
+        /* access $btn.attr("name") and $btn.val() for data */
+		alert("Value:", $btn.val());
+    }
 		$.ajax({
 			url: 'http://flask-app-dexter-lab.e4ff.pro-eu-west-1.openshiftapps.com:80/date/',
 			data: {'time_scale': value},
@@ -77,7 +91,7 @@
 			success: function(data) {
 				$('#value').val('');
 				var obj = JSON.parse(data['time_scale']);
-				$('#result').html('config: ' + obj.config + '<br>' + 'distance data: ' + obj.distance_data)
+				$('#result').html('config: ' + obj.config + '<br>' + 'distance data: ' + obj.distance_data + '<br>' + data['time_scale'])
 			}
 		});
 	});
