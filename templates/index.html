@@ -76,7 +76,8 @@
 			method: 'POST',
 			success: function(data) {
 				$('#value').val('');
-				$('#result').html('We will search for values from following date: ' + data['time_scale'])
+				var obj = JSON.parse(data['time_scale']);
+				$('#result').html('config: ' + obj.config + '<br>' + 'distance data: ' + obj.distance_data)
 			}
 		});
 	});
