@@ -24,7 +24,7 @@
 	<div>
 	<h1>Date Calculator</h1>
 	<form method="post" id="form">
-	<button value="month">Month</button><button value="week">Week</button><button value="3_days">3 days</button><button value="1_day">1 day</button>
+	<button value="month" type="submit">Month</button><button value="week" type="submit">Week</button><button value="3_days" type="submit">3 days</button><button value="1_day" type="submit">1 day</button>
     </form>
 	<p id="result"></p>
 	</div>
@@ -72,10 +72,10 @@
         $btn.length &&
 
         /* it's a child of the form */ 
-        $form.has($btn) &&
+        $('#form').has($btn) &&
 
         /* it's really a submit element */
-        $btn.is('button[type="submit"], input[type="submit"], input[type="image"]') &&
+        $btn.is('button[type="submit"]) &&
 
         /* it has a "name" attribute */
         $btn.is('[name]')
