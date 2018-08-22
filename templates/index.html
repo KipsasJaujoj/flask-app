@@ -78,8 +78,8 @@
 		  method: 'POST',
 		  success: function(data) {
 			$('#value').val('');
-			var obj = data['time_scale'];
-			$('#result').html('value: ' + value + '<br>' + 'config: ' + data['time_scale']['config'] + '<br>' + 'distance data: ' + data['time_scale']['distance_data'] + '<br>' + data['time_scale'])
+			var obj = JSON.parse(data['time_scale']);
+			$('#result').html('value: ' + value + '<br>' + 'config: ' + obj.config + '<br>' + 'distance data: ' + obj.distance_data + '<br>' + typeof obj + '<br>' + typeof data['time_scale'] + '<br>' + data['time_scale'])
 		  }
 		});
 	  });
