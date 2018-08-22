@@ -79,7 +79,7 @@
 		  success: function(data) {
 			$('#value').val('');
 			var obj = JSON.parse(data['time_scale']);
-			$('#result').html('value: ' + value + '<br>' + 'config: ' + obj.config + '<br>' + 'distance data: ' + obj.distance_data + '<br>' + typeof obj + '<br>' + typeof data['time_scale'] + '<br>' + data['time_scale'])
+			$('#result').html('value: ' + value + '<br>' + 'config: ' + obj.config + '<br>' + 'distance data: ' + obj.distance_data["2018-08-21 19:35:29"]["ec:fa:bc:e:a6:95_1"]["distance"] + '<br>' + data['time_scale'])
 		  }
 		});
 	  });
