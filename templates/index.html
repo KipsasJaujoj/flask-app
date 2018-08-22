@@ -69,10 +69,9 @@
         buttonpressed = $(this).attr('value')
        })
 	  $('#form').on('submit', function(e){
-		var value = $('#value').val();
-		e.preventDefault();
-		alert('button clicked was ' + buttonpressed)
+		var value = buttonpressed;
 		buttonpressed=""
+		e.preventDefault();
 		$.ajax({
 		  url: 'http://flask-app-dexter-lab.e4ff.pro-eu-west-1.openshiftapps.com:80/date/',
 		  data: {'time_scale': value},
