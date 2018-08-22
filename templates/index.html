@@ -63,19 +63,27 @@
 	}
 	</script>
 	<script>
-	$('#form').on('submit', function(e){
+	$(function() {
+      var buttonpressed;
+      $('.submitbutton').click(function() {
+        buttonpressed = $(this).attr('value')
+       })
+	  $('#form').on('submit', function(e){
 		var value = $('#value').val();
 		e.preventDefault();
+		alert('button clicked was ' + buttonpressed)
+		buttonpressed=""
 		$.ajax({
-			url: 'http://flask-app-dexter-lab.e4ff.pro-eu-west-1.openshiftapps.com:80/date/',
-			data: {'time_scale': value},
-			method: 'POST',
-			success: function(data) {
-				$('#value').val('');
-				var obj = JSON.parse(data['time_scale']);
-				$('#result').html('value: ' + value + '<br>' + 'config: ' + obj.config + '<br>' + 'distance data: ' + obj.distance_data + '<br>' + data['time_scale'])
-			}
+		  url: 'http://flask-app-dexter-lab.e4ff.pro-eu-west-1.openshiftapps.com:80/date/',
+		  data: {'time_scale': value},
+		  method: 'POST',
+		  success: function(data) {
+			$('#value').val('');
+			var obj = JSON.parse(data['time_scale']);
+			$('#result').html('value: ' + value + '<br>' + 'config: ' + obj.config + '<br>' + 'distance data: ' + obj.distance_data + '<br>' + data['time_scale'])
+		  }
 		});
+	  });
 	});
 	</script>
     </body>
