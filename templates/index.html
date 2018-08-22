@@ -79,7 +79,7 @@
 		  success: function(data) {
 			$('#value').val('');
 			var obj = data['time_scale'];
-			$('#result').html('value: ' + value + '<br>' + 'config: ' + obj.config + '<br>' + 'distance data: ' + obj.distance_data + '<br>' + data['time_scale'])
+			$('#result').html('value: ' + value + '<br>' + 'config: ' + obj['config'] + '<br>' + 'distance data: ' + obj['distance_data'] + '<br>' + data['time_scale'])
 		  }
 		});
 	  });
