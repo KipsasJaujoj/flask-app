@@ -64,26 +64,8 @@
 	</script>
 	<script>
 	$('#form').on('submit', function(e){
-//		var value = $('#value').val();
+		var value = $('#value').val();
 		e.preventDefault();
-		var $btn = $(document.activeElement);
-		if (
-        /* there is an activeElement at all */
-        $btn.length &&
-
-        /* it's a child of the form */ 
-        $('#form').has($btn) &&
-
-        /* it's really a submit element */
-        $btn.is('button[type="submit"]) &&
-
-        /* it has a "name" attribute */
-        $btn.is('[name]')
-    ) {
-        alert("Seems, that this element was clicked:", $btn);
-        /* access $btn.attr("name") and $btn.val() for data */
-		alert("Value:", $btn.val());
-    }
 		$.ajax({
 			url: 'http://flask-app-dexter-lab.e4ff.pro-eu-west-1.openshiftapps.com:80/date/',
 			data: {'time_scale': value},
