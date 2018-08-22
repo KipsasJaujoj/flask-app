@@ -45,9 +45,9 @@ def get_template_data(date=None):
     cur = db.cursor()
 #        cur.execute("""SELECT * FROM `sensor_data` WHERE timestamp < '2018-08-06 09:38:40' ORDER BY timestamp DESC LIMIT 200""")
     if date is None:
-        mysql_string = "SELECT * FROM `sensor_data` ORDER BY timestamp DESC LIMIT 500"
+        mysql_string = "SELECT * FROM `sensor_data` ORDER BY timestamp DESC LIMIT 200"
     else:
-        mysql_string = "SELECT * FROM `sensor_data` WHERE timestamp < '{}' ORDER BY timestamp DESC".format(date)
+        mysql_string = "SELECT * FROM `sensor_data` WHERE timestamp > '{}' ORDER BY timestamp DESC".format(date)
     cur.execute(mysql_string)
     data = cur.fetchall()
     parsed_data = OrderedDict()
