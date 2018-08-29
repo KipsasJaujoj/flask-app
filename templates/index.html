@@ -27,6 +27,7 @@
 	<button value="month" class="submitbutton" type="submit">Month</button><button value="week" type="submit" class="submitbutton">Week</button><button value="3_days" type="submit" class="submitbutton">3 days</button><button value="1_day" type="submit" class="submitbutton">1 day</button>
     </form>
 	<p id="result"></p>
+	<p id="test"></p>
 	</div>
 	<script>
     g = new Dygraph(
@@ -80,10 +81,31 @@
 			$('#value').val('');
 			var obj = JSON.parse(data['time_scale']);
 			$('#result').html('value: ' + value + '<br>' + 'config: ' + obj.config + '<br>' + 'distance data: ' + obj.distance_data["2018-08-21 19:35:29"]["ec:fa:bc:e:a6:95_1"]["distance"] + '<br>' + data['time_scale'])
+			var new_func = `g = new Dygraph(
+    document.getElementById("dychart-chart"),
+    [{% for i in distance_data %}
+	    [new Date("{{ i }}"),{% for j in config['floors'][4] %}{{ distance_data[i][j]['distance'] }}{{ "," if not loop.last }}{% endfor %}]{{ "," if not loop.last }}{% endfor %}
+    ],
+	{
+		labels: ["data", {% for i in config['floors'][4] %}"{{ i }}"{{ ", " if not loop.last }}{% endfor %}],
+		rollPeriod: 1,
+		showRoller: true,
+		legend: 'always',
+		axisLabelWidth: 30,
+		fillGraph: false,
+		ylabel: 'Distance (cm)',
+		xlabel: 'Time',
+		digitsAfterDecimal: 2,
+		showRangeSelector: true,
+		rangeSelectorHeight: 30,
+		visibility:[true,true,true,true]
+	}
+);`
+			$('#test').html('function: ' + new_func)
 		  }
 		});
 	  });
 	});
 	</script>
-    </body>
+	</body>
 </html>
