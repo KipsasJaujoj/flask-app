@@ -26,7 +26,6 @@
 	<form method="post" id="form">
 	<button value="month" class="submitbutton" type="submit">Month</button><button value="week" type="submit" class="submitbutton">Week</button><button value="3_days" type="submit" class="submitbutton">3 days</button><button value="1_day" type="submit" class="submitbutton">1 day</button>
     </form>
-	<p id="result"></p>
 	<p id="test"></p>
 	</div>
 	<script>
@@ -80,11 +79,10 @@
 		  success: function(data) {
 			$('#value').val('');
 			var obj = JSON.parse(data['time_scale']);
-			$('#result').html('value: ' + value + '<br>' + 'config: ' + obj.config + '<br>' + 'distance data: ' + obj.distance_data["2018-08-21 19:35:29"]["ec:fa:bc:e:a6:95_1"]["distance"] + '<br>' + data['time_scale'])
 			var dataList = [];
 			var labels = ["data"];
 			for (i in obj.distance_data) {
-                dataList.push(new Data(i));
+                dataList.push(new Date(i));
             }
 			for (i in obj.config['floors']['4']) {
 				labels.push(i);
@@ -104,7 +102,10 @@
 		        rangeSelectorHeight: 30,
 		        visibility:[true,true,true,true]
 	        }
+			console.log('xxx xxx xxx');
 			console.log(dataList, parameters);
+			console.log('xxx xxx xxx');
+			console.log('value: ' + value + '<br>' + 'config: ' + obj.config + '<br>' + data['time_scale']);
 			g = new Dygraph(divField, dataList, parameters);
 		  }
 		});
