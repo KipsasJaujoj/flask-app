@@ -49,8 +49,6 @@
 		visibility:[true,true,true,true]
 	}
 );
-    console.log("pirma g");
-    console.log(g.toString());
     setStatus();
     function setStatus() {
       document.getElementById("visibility").innerHTML = g.visibility().toString();
@@ -110,7 +108,9 @@
 			console.log('xxx xxx xxx');
 			console.log(' ', divField, dataList, parameters);
 			console.log('xxx xxx xxx');
-			console.log('value: ' + value, 'config: ' + obj.config, 'distance_data' + obj.distance_data);
+			console.log('value: ' + value, 'config: ' + obj.config.toString(), 'distance_data' + obj.distance_data.toString());
+			console.log('pirma g');
+            console.log(' ', g.toString());
 			g = new Dygraph(divField, dataList, parameters);
 		  }
 		});
