@@ -49,6 +49,8 @@
 		visibility:[true,true,true,true]
 	}
 );
+    console.log("pirma g");
+    console.log(g.toString());
     setStatus();
     function setStatus() {
       document.getElementById("visibility").innerHTML = g.visibility().toString();
@@ -80,7 +82,7 @@
 			$('#value').val('');
 			var obj = JSON.parse(data['time_scale']);
 			var dataList = [];
-			var labels = ["data"];
+			var labels = ['data'];
 			for (i in obj.distance_data) {
                 dataList.push(new Date(i));
 				for (j in obj.config['floors'][4]) {
@@ -108,7 +110,7 @@
 			console.log('xxx xxx xxx');
 			console.log(' ', divField, dataList, parameters);
 			console.log('xxx xxx xxx');
-			console.log('value: ' + value, 'config: ' + obj.config, 'time_scale: ' + data['time_scale']);
+			console.log('value: ' + value, 'config: ' + obj.config, 'distance_data' + obj.distance_data);
 			g = new Dygraph(divField, dataList, parameters);
 		  }
 		});
