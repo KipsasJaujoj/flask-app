@@ -87,7 +87,7 @@
 				    dataList.push(obj.distance_data[i][j]['distance']);
 				}
             }
-			for (i in obj.config['floors']['4']) {
+			for (i in obj.config['floors'][4]) {
 				labels.push(i);
 			}
 			var divField = document.getElementById("dychart-chart");
@@ -106,7 +106,7 @@
 		        visibility:[true,true,true,true]
 	        }
 			console.log('xxx xxx xxx');
-			console.log(dataList, parameters);
+			console.log(' ', divField, dataList, parameters);
 			console.log('xxx xxx xxx');
 			console.log('value: ' + value, 'config: ' + obj.config, 'time_scale: ' + data['time_scale']);
 			g = new Dygraph(divField, dataList, parameters);
