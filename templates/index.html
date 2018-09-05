@@ -81,29 +81,18 @@
 			$('#value').val('');
 			var obj = JSON.parse(data['time_scale']);
 			$('#result').html('value: ' + value + '<br>' + 'config: ' + obj.config + '<br>' + 'distance data: ' + obj.distance_data["2018-08-21 19:35:29"]["ec:fa:bc:e:a6:95_1"]["distance"] + '<br>' + data['time_scale'])
-			var data_string = "";
-			var distance_dataLength = Object.keys(obj.distance_data).length;
-			var configLength = Object.keys(obj.config['floors']['4']).length;
-			for (var i = 0;i < distance_dataLength;i++) {
-                data_string = data_string + "[new Data(" + obj.distance_data[i] + "),"
-				for (var j = 0;j <configLength;j++) {
-				    data_string = data_string + obj.distance_data[distance][obj.config['floors']['4'][j]]['distance'];
-					if((j + 1) != (configLength)){
-                        data_string = data_string + ",";
-                    }
-				}
-				if((i + 1) != (distance_dataLength)){
-                    data_string = data_string + ",";
-                }
+			var dataList = [];
+			var labels = ["data"];
+			for (i in distance_data) {
+                var dataList.push(new Data(i));
             }
-			var label_string = "";
-			for (var j = 0;j <configLength;j++) {
-				label_string = label_string + obj.config['floors']['4'];
-				if((j + 1) != (configLength)){
-                    label_string = label_string + ",";
-                }
+			for (i in config['floors']['4']) {
+				labels.push(i);
 			}
-			var new_func = `g = new Dygraph(
+			var divField = document.getElementById("dychart-chart");
+			console.log(dataList, labels);
+			
+/*			g = `g = new Dygraph(
     document.getElementById("dychart-chart"),
     [` + data_string + `],
 	{
@@ -120,8 +109,9 @@
 		rangeSelectorHeight: 30,
 		visibility:[true,true,true,true]
 	}
-);`
+);`*/
 			$('#test').html('function: ' + new_func)
+			$('#dychart-chart').html('function: ' + new_func)
 		  }
 		});
 	  });
