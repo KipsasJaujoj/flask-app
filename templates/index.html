@@ -83,28 +83,28 @@
 			$('#result').html('value: ' + value + '<br>' + 'config: ' + obj.config + '<br>' + 'distance data: ' + obj.distance_data["2018-08-21 19:35:29"]["ec:fa:bc:e:a6:95_1"]["distance"] + '<br>' + data['time_scale'])
 			var dataList = [];
 			var labels = ["data"];
-			for (i in distance_data) {
+			for (i in obj.distance_data) {
                 dataList.push(new Data(i));
             }
-			for (i in config['floors']['4']) {
+			for (i in obj.config['floors']['4']) {
 				labels.push(i);
 			}
 			var divField = document.getElementById("dychart-chart");
-			console.log(dataList, labels);
 			var parameters = {
-		        'labels': labels,
-		        'rollPeriod': 1,
-		        'showRoller': true,
-		        'legend': 'always',
-		        'axisLabelWidth': 30,
-		        'fillGraph': false,
-		        'ylabel': 'Distance (cm)',
-		        'xlabel': 'Time',
-		        'digitsAfterDecimal': 2,
-		        'showRangeSelector': true,
-		        'rangeSelectorHeight': 30,
-		        'visibility':[true,true,true,true]
+		        labels: labels,
+		        rollPeriod: 1,
+		        showRoller: true,
+		        legend: 'always',
+		        axisLabelWidth: 30,
+		        fillGraph: false,
+		        ylabel: 'Distance (cm)',
+		        xlabel: 'Time',
+		        digitsAfterDecimal: 2,
+		        showRangeSelector: true,
+		        rangeSelectorHeight: 30,
+		        visibility:[true,true,true,true]
 	        }
+			console.log(dataList, parameters);
 			g = new Dygraph(divField, dataList, parameters);
 		  }
 		});
