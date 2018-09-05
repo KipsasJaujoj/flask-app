@@ -84,34 +84,28 @@
 			var dataList = [];
 			var labels = ["data"];
 			for (i in distance_data) {
-                var dataList.push(new Data(i));
+                dataList.push(new Data(i));
             }
 			for (i in config['floors']['4']) {
 				labels.push(i);
 			}
 			var divField = document.getElementById("dychart-chart");
 			console.log(dataList, labels);
-			
-/*			g = `g = new Dygraph(
-    document.getElementById("dychart-chart"),
-    [` + data_string + `],
-	{
-		labels: ["data", ` + label_string + `],
-		rollPeriod: 1,
-		showRoller: true,
-		legend: 'always',
-		axisLabelWidth: 30,
-		fillGraph: false,
-		ylabel: 'Distance (cm)',
-		xlabel: 'Time',
-		digitsAfterDecimal: 2,
-		showRangeSelector: true,
-		rangeSelectorHeight: 30,
-		visibility:[true,true,true,true]
-	}
-);`*/
-			$('#test').html('function: ' + new_func)
-			$('#dychart-chart').html('function: ' + new_func)
+			var parameters = {
+		        'labels': labels,
+		        'rollPeriod': 1,
+		        'showRoller': true,
+		        'legend': 'always',
+		        'axisLabelWidth': 30,
+		        'fillGraph': false,
+		        'ylabel': 'Distance (cm)',
+		        'xlabel': 'Time',
+		        'digitsAfterDecimal': 2,
+		        'showRangeSelector': true,
+		        'rangeSelectorHeight': 30,
+		        'visibility':[true,true,true,true]
+	        }
+			g = new Dygraph(divField, dataList, parameters);
 		  }
 		});
 	  });
