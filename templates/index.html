@@ -84,7 +84,7 @@
 			for (i in obj.distance_data) {
                 dataList.push(new Date(i));
 				for (j in obj.config['floors'][4]) {
-				    dataList.push(distance_data[i][j]['distance']);
+				    dataList.push(obj.distance_data[i][j]['distance']);
 				}
             }
 			for (i in obj.config['floors']['4']) {
@@ -108,7 +108,7 @@
 			console.log('xxx xxx xxx');
 			console.log(dataList, parameters);
 			console.log('xxx xxx xxx');
-			console.log('value: ' + value + '<br>' + 'config: ' + obj.config + '<br>' + data['time_scale']);
+			console.log('value: ' + value, 'config: ' + obj.config, 'time_scale: ' + data['time_scale']);
 			g = new Dygraph(divField, dataList, parameters);
 		  }
 		});
