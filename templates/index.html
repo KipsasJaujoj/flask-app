@@ -83,6 +83,9 @@
 			var labels = ["data"];
 			for (i in obj.distance_data) {
                 dataList.push(new Date(i));
+				for (j in obj.config['floors'][4]) {
+				    dataList.push(distance_data[i][j]['distance']);
+				}
             }
 			for (i in obj.config['floors']['4']) {
 				labels.push(i);
