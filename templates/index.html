@@ -81,13 +81,33 @@
 			$('#value').val('');
 			var obj = JSON.parse(data['time_scale']);
 			$('#result').html('value: ' + value + '<br>' + 'config: ' + obj.config + '<br>' + 'distance data: ' + obj.distance_data["2018-08-21 19:35:29"]["ec:fa:bc:e:a6:95_1"]["distance"] + '<br>' + data['time_scale'])
+			var data_string = "";
+			var distance_dataLength = Object.keys(obj.distance_data).length;
+			var configLength = Object.keys(obj.config['floors']['4']).length;
+			for (var i = 0;i < distance_dataLength;i++) {
+                data_string = data_string + "[new Data(" + obj.distance_data[i] + "),"
+				for (var j = 0;j <configLength;j++) {
+				    data_string = data_string + obj.distance_data[distance][obj.config['floors']['4'][j]]['distance'];
+					if((j + 1) != (configLength)){
+                        data_string = data_string + ",";
+                    }
+				}
+				if((i + 1) != (distance_dataLength)){
+                    data_string = data_string + ",";
+                }
+            }
+			var label_string = "";
+			for (var j = 0;j <configLength;j++) {
+				label_string = label_string + obj.config['floors']['4'];
+				if((j + 1) != (configLength)){
+                    label_string = label_string + ",";
+                }
+			}
 			var new_func = `g = new Dygraph(
     document.getElementById("dychart-chart"),
-    [{% for i in distance_data %}
-	    [new Date("{{ i }}"),{% for j in config['floors'][4] %}{{ distance_data[i][j]['distance'] }}{{ "," if not loop.last }}{% endfor %}]{{ "," if not loop.last }}{% endfor %}
-    ],
+    [` + data_string + `],
 	{
-		labels: ["data", {% for i in config['floors'][4] %}"{{ i }}"{{ ", " if not loop.last }}{% endfor %}],
+		labels: ["data", ` + label_string + `],
 		rollPeriod: 1,
 		showRoller: true,
 		legend: 'always',
